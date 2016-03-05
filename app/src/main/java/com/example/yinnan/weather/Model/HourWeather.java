@@ -41,10 +41,11 @@ public class HourWeather implements Parcelable {
     }
 
     public String getHour() {
-        SimpleDateFormat formatter = new SimpleDateFormat("h a");
+        SimpleDateFormat formatter = new SimpleDateFormat("hh a");
         formatter.setTimeZone(TimeZone.getTimeZone(mTimeZone));
         Date date = new Date(mTime*1000);
-        return formatter.format(date);
+        String ans = formatter.format(date);
+        return ans;
     }
 
     public void setTime(long time) {
@@ -94,7 +95,7 @@ public class HourWeather implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeDouble(mTime);
+        dest.writeLong(mTime);
         dest.writeString(mSummary);
         dest.writeDouble(mTemperature);
         dest.writeString(mIcon);

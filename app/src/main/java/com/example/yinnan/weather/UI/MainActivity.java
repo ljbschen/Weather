@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Forecast getForecast(String jsonData) throws JSONException {
         Forecast forecast = new Forecast();
-        forecast.setCurrent(getWeather(jsonData));
+        forecast.setCurrent(getCurrentWeather(jsonData));
         forecast.setDaily(getDailyWeather(jsonData));
         forecast.setHour(getHourWeather(jsonData));
         return forecast;
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         return dailyWeathers;
     }
 
-    private CurrentWeather getWeather(String jsonData) throws JSONException {
+    private CurrentWeather getCurrentWeather(String jsonData) throws JSONException {
         JSONObject forecastInfo = new JSONObject(jsonData);
         CurrentWeather weather = new CurrentWeather();
         weather.setTimeZone(forecastInfo.getString("timezone"));
