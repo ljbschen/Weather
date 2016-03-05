@@ -40,15 +40,15 @@ public class HourWeather implements Parcelable {
         return mTime;
     }
 
-    public void setTime(long time) {
-        mTime = time;
+    public String getHour() {
+        SimpleDateFormat formatter = new SimpleDateFormat("h a");
+        formatter.setTimeZone(TimeZone.getTimeZone(mTimeZone));
+        Date date = new Date(mTime*1000);
+        return formatter.format(date);
     }
 
-    public String getFormattedTime() {
-        Date date = new Date(mTime*1000);
-        SimpleDateFormat formatter = new SimpleDateFormat("hh:mm a");
-        formatter.setTimeZone(TimeZone.getTimeZone(mTimeZone));
-        return formatter.format(date);
+    public void setTime(long time) {
+        mTime = time;
     }
 
     public String getSummary() {
@@ -59,8 +59,8 @@ public class HourWeather implements Parcelable {
         mSummary = summary;
     }
 
-    public double getTemperature() {
-        return mTemperature;
+    public int getTemperature() {
+        return (int)Math.round(mTemperature);
     }
 
     public void setTemperature(double temperature) {
