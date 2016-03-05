@@ -35,7 +35,7 @@ public class HourlyActivity extends AppCompatActivity {
         Parcelable[] parcelables = intent.getParcelableArrayExtra("Hours");
         mHours = Arrays.copyOf(parcelables, parcelables.length, HourWeather[].class);
 
-        mRecyclerView.setAdapter(new HourAdapter(mHours));
+        mRecyclerView.setAdapter(new HourAdapter(this, mHours));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setHasFixedSize(true);
     }
