@@ -1,11 +1,39 @@
 package com.example.yinnan.weather.Model;
 
-public class DailyWeather {
+import android.os.Parcel;
+import android.os.Parcelable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+public class DailyWeather implements Parcelable {
     private long mTime;
     private String mSummary;
     private double mMaxTemp;
-    private double mMinTemp;
     private String mIcon;
+    private String mTimeZone;
+
+    public DailyWeather() {}
+
+    private DailyWeather(Parcel in) {
+        mTime = in.readLong();
+        mSummary = in.readString();
+        mMaxTemp = in.readDouble();
+        mIcon = in.readString();
+        mTimeZone = in.readString();
+    }
+
+    public static final Creator<DailyWeather> CREATOR = new Creator<DailyWeather>() {
+        @Override
+        public DailyWeather createFromParcel(Parcel in) {
+            return new DailyWeather(in);
+        }
+
+        @Override
+        public DailyWeather[] newArray(int size) {
+            return new DailyWeather[size];
+        }
+    };
 
     public String getIcon() {
         return mIcon;
@@ -15,7 +43,9 @@ public class DailyWeather {
         mIcon = icon;
     }
 
-    private String mTimeZone;
+    public int getIconId() {
+        return Forecast.getIconId(mIcon);
+    }
 
     public long getTime() {
         return mTime;
@@ -33,20 +63,12 @@ public class DailyWeather {
         mSummary = summary;
     }
 
-    public double getMaxTemp() {
-        return mMaxTemp;
+    public int getMaxTemp() {
+        return (int)Math.round(mMaxTemp);
     }
 
     public void setMaxTemp(double maxTemp) {
         mMaxTemp = maxTemp;
-    }
-
-    public double getMinTemp() {
-        return mMinTemp;
-    }
-
-    public void setMinTemp(double minTemp) {
-        mMinTemp = minTemp;
     }
 
     public String getTimeZone() {
@@ -55,5 +77,33 @@ public class DailyWeather {
 
     public void setTimeZone(String timeZone) {
         mTimeZone = timeZone;
+    }
+
+    public String getDayOfTheWeek() {
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE");
+        formatter.setTimeZone(TimeZone.getTimeZone(mTimeZone));
+        Date date = new Date(mTime*1000);
+        return formatter.format(date);
+    }
+
+    public String getDay() {
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd");
+        formatter.setTimeZone(TimeZone.getTimeZone(mTimeZone));
+        Date date = new Date(mTime*1000);
+        return formatter.format(date);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(mTime);
+        dest.writeString(mSummary);
+        dest.writeDouble(mMaxTemp);
+        dest.writeString(mIcon);
+        dest.writeString(mTimeZone);
     }
 }

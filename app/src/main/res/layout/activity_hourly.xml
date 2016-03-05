@@ -7,13 +7,12 @@
     tools:context="com.example.yinnan.weather.UI.HourlyActivity"
     android:background="@drawable/bg_gradient">
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@android:id/list"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:id="@+id/recycleView"
+        />
+
 
     <TextView
         android:layout_width="wrap_content"

@@ -66,18 +66,8 @@ public class CurrentWeather {
         mIcon = icon;
     }
 
-    public int getIconID() {
-        //clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
-        if (mIcon.equals("clear-day")) return R.drawable.sunny;
-        else if (mIcon.equals("clear-night")) return R.drawable.clear_night;
-        else if (mIcon.equals("partly-cloudy-day")) return R.drawable.partly_cloudy;
-        else if (mIcon.equals("partly-cloudy-night")) return R.drawable.cloudy_night;
-        else if (mIcon.equals("rain")) return R.drawable.rain;
-        else if (mIcon.equals("snow")) return R.drawable.snow;
-        else if (mIcon.equals("sleet")) return R.drawable.sleet;
-        else if (mIcon.equals("wind")) return R.drawable.wind;
-        else if (mIcon.equals("fog")) return R.drawable.fog;
-        else return R.drawable.cloudy;
+    public int getIconId() {
+        return Forecast.getIconId(mIcon);
     }
 
     public String getSummary() {

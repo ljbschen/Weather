@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, HourlyActivity.class);
+                intent.putExtra("Hours", mForecast.getHour());
                 startActivity(intent);
             }
         });
@@ -72,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DailyActivity.class);
+                intent.putExtra("Days", mForecast.getDaily());
                 startActivity(intent);
-
             }
         });
     }
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         mTemperatureTextView.setText(currentWeather.getTemperature() + "");
         mTimeTextView.setText("At " + currentWeather.getFormattedTime() + " it will be:");
         mSummaryTextView.setText(currentWeather.getSummary());
-        mIconImageView.setImageDrawable(getResources().getDrawable(currentWeather.getIconID()));
+        mIconImageView.setImageDrawable(getResources().getDrawable(currentWeather.getIconId()));
     }
 
     private Forecast getForecast(String jsonData) throws JSONException {
@@ -122,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
             dailyWeathers[i].setIcon(currentDay.getString("icon"));
             dailyWeathers[i].setSummary(currentDay.getString("summary"));
             dailyWeathers[i].setMaxTemp(currentDay.getDouble("temperatureMax"));
-            dailyWeathers[i].setMinTemp(currentDay.getDouble("temperatureMin"));
             dailyWeathers[i].setTimeZone(forecastInfo.getString("timezone"));
             dailyWeathers[i].setTime(currentDay.getLong("time"));
         }
