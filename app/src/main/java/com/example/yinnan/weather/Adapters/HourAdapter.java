@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import com.example.yinnan.weather.Model.HourWeather;
 import com.example.yinnan.weather.R;
+import com.example.yinnan.weather.UI.HourlyActivity;
+
+import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,8 +27,7 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
     public HourViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.hourly_list_item, parent, false);
-        HourViewHolder viewHolder = new HourViewHolder(view);
-        return viewHolder;
+        return new HourViewHolder(view);
     }
 
     @Override
@@ -39,14 +41,15 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
     }
 
     public class HourViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.temperatureLabel) TextView mTemperatureLabel;
-        @Bind(R.id.summarLabel) TextView mSummaryLabel;
-        @Bind(R.id.timeLabel) TextView mTimeLabel;
-        @Bind(R.id.iconImageView) ImageView mIconImageView;
+        TextView mTemperatureLabel, mSummaryLabel, mTimeLabel;
+        ImageView mIconImageView;
 
         public HourViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+            mTemperatureLabel = (TextView) itemView.findViewById(R.id.temperatureLabel);
+            mSummaryLabel = (TextView) itemView.findViewById(R.id.summaryLabel);
+            mTimeLabel = (TextView) itemView.findViewById(R.id.timeLabel);
+            mIconImageView = (ImageView) itemView.findViewById(R.id.iconImageView);
         }
 
         public void bindHour(HourWeather hour) {

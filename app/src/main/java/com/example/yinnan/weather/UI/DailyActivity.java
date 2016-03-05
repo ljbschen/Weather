@@ -26,8 +26,6 @@ public class DailyActivity extends ListActivity {
         Parcelable[] parcelables = intent.getParcelableArrayExtra("Days");
         mDays = Arrays.copyOf(parcelables, parcelables.length, DailyWeather[].class);
         //context, layout, data
-        DayAdapter adapter = new DayAdapter(this, mDays);
-        setListAdapter(adapter);
-
+        setListAdapter(new DayAdapter(this, mDays));
     }
 }

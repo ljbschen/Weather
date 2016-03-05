@@ -45,7 +45,7 @@
         tools:text = "summary"
         android:textColor="#ffffffff"
         android:textSize="24sp"
-        android:id="@+id/summarLabel"
+        android:id="@+id/summaryLabel"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/iconImageView"
         android:layout_toLeftOf="@+id/temperatureLabel"/>
