@@ -15,7 +15,7 @@ import com.example.yinnan.weather.R;
 
 import java.util.Arrays;
 
-public class HourlyActivity extends ListActivity {
+public class HourlyActivity extends AppCompatActivity {
     HourWeather[] mHours;
 
     @Override
