@@ -1,23 +1,15 @@
 package com.example.yinnan.weather.UI;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-
 import com.example.yinnan.weather.Adapters.HourAdapter;
 import com.example.yinnan.weather.Model.HourWeather;
 import com.example.yinnan.weather.R;
-
 import java.util.Arrays;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -39,5 +31,4 @@ public class HourlyActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setHasFixedSize(true);
     }
-
 }
