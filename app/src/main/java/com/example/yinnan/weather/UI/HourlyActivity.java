@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 public class HourlyActivity extends AppCompatActivity {
     HourWeather[] mHours;
 
-    @Bind(R.id.recycleView) RecyclerView mRecyclerView;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

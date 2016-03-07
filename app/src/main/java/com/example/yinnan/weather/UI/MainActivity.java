@@ -52,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mRefreshImageView.setVisibility(View.VISIBLE);
         mProgressBar.setVisibility(View.INVISIBLE);
+
         final double latitude=37.8267;
         final double longitude=-122.423;
+
         getJsonData(latitude, longitude);
         mRefreshImageView.setOnClickListener(new View.OnClickListener() {
             @Override
